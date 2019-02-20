@@ -9,15 +9,15 @@ router.post('/', (req, res) => {
 });
 
 router.get('/:num', (req, res)=>{
-    res.send('Detail of ' + req.params.num + 'article');
+    res.send('Detail of ' + req.params.num + ' article');
 });
 
 router.put('/:num', (req, res) => {
-    res.send('Modify of ' + req.params.num + 'article');
+    res.send('Modify of ' + req.params.num + ' article');
 });
 
 router.delete('/:num', (req, res) => {
-    res.send('Delete of ' + req.params.num + 'article');
+    res.send('Delete of ' + req.params.num + ' article');
 });
 
 module.exports = router;
