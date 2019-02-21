@@ -5,6 +5,7 @@ const path = require('path');
 const homeRouter = require('./routes/homeRouter');
 const articlesRouter = require('./routes/articlesRouter');
 const connect = require('./schemas'); // 파일명이 index.js 면 /index 생략 가능하다.
+require('dotenv').config();
 
 const app = express();
 // connection before middle wares

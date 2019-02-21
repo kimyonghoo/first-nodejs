@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 
 module.exports = () => {
+    const DB_URL = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/admin`;
     const connect = () => {
         if (process.env.NODE_ENV !== 'production') {
             mongoose.set('debug', true);
         }
-        mongoose.connect('mongodb://root:admin@localhost:27017/admin', {
-            dbName: 'nodejs',
+        mongoose.connect(DB_URL, {
+            dbName: process.env.DB_NAME,
             useNewUrlParser: true
         }, (error) => {
             if (error) {
