@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Article = require('../schemas/articles');
+const logger = require('../middlewares/logger');
 
 //read article lists - Promise 방식
 /*
@@ -15,7 +16,7 @@ router.get('/', (req, res) => {
 */
 
 //read article lists - async/await 방식
-router.get('/', async (req, res) => {
+router.get('/', logger, async (req, res) => {
     try {
         const articles = await Article.find({});
         res.json(articles);
