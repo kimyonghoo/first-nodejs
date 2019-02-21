@@ -4,10 +4,13 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const homeRouter = require('./routes/homeRouter');
 const articlesRouter = require('./routes/articlesRouter');
+const connect = require('./schemas'); // 파일명이 index.js 면 /index 생략 가능하다.
 
 const app = express();
+// connection before middle wares
+connect();
 
-//middlewares....
+// middle wares....
 app.use(logger('dev'));
 app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
@@ -17,28 +20,8 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use('/', homeRouter);
 app.use('/articles', articlesRouter);
 
-/*
-app.get('/', (req, res) => {
-    res.json({test:'test'});
-})
 
-app.get('/users', (req, res) => {
-    res.json({test:'users'});
-})
 
-app.post('/users', (req, res) => {
-    res.json({test:'users/post'});
-})
-
-//글쓰기
-app.post('/articles', (req, res) => {
-    console.log(req.body);
-    res.json({
-        title: req.body.title,
-        content: req.body.content
-    });
-})
-*/
 /*
  * send errors - can not found routers
  * 404 error handler
