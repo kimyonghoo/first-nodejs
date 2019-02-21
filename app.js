@@ -10,6 +10,10 @@ const app = express();
 // connection before middle wares
 connect();
 
+// views setting
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 // middle wares....
 app.use(logger('dev'));
 app.use('/static', express.static(path.join(__dirname, 'public')));
